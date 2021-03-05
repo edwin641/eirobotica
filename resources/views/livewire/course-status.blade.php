@@ -35,7 +35,7 @@
                 
             </div>
 
-            <div class="card mt-2">
+            <div class="card mt-2 mb-4">
                 <div class="card-body flex text-gray-500 font-bold ">
                     @if ($this->previous)
                         <a wire:click="changeLesson({{$this->previous}})" class="cursos-pointer" href="">Tema anterior</a>    
@@ -47,9 +47,13 @@
 
                 </div>
             </div>
-
-          
+            <div>
+                @livewire('course-questions', ['course' => $course])
+            </div>
+           
         </div>
+
+        
 
         <div class="card">
             <div class="card-body">
@@ -114,6 +118,7 @@
             </div>
 
         </div>
+        
 
     </div>
 </div>

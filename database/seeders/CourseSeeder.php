@@ -12,6 +12,7 @@ use App\Models\Section;
 use Illuminate\Database\Seeder;
 use App\Models\Description;
 use App\Models\Review;
+use App\Models\Question;
 
 class CourseSeeder extends Seeder
 {
@@ -28,6 +29,10 @@ class CourseSeeder extends Seeder
         foreach($courses as $course){
 
             Review::factory(5)->create([
+                'course_id' => $course->id
+            ]);
+
+            Question::factory(5)->create([
                 'course_id' => $course->id
             ]);
 

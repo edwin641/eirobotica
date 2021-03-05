@@ -15,7 +15,7 @@
                 </div>
 
                 <hr>
-                <p class="text-sm mt-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate nihil, deserunt eos accusantium vitae, laboriosam amet laborum ipsam reiciendis dolores, repellendus repellat distinctio debitis modi doloremque enim qui vel incidunt! <a  class="text-red-500 font-bold" href="">Terminos y condiciones</a></p>
+                <p class="text-sm mt-4">Al hacer clic en "Crear cuenta" certifico que tengo 16 años o más y acepto las Condiciones de Uso, la Política de Privacidad y recibir novedades y promociones. <a  class="text-red-500 font-bold" href="{{'terms'}}">Terminos y condiciones</a></p>
             </div>
         </div>
     </div>

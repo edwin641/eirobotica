@@ -18,15 +18,15 @@ class CategorySeeder extends Seeder
     {
         //
         Category::create([
-            'name'=>'Desarrollo web'
+            'name'=>'Programacion'
         ]);
 
         Category::create([
-            'name'=>'Diseño web'
+            'name'=>'Electrónica'
         ]);
         
         Category::create([
-            'name'=>'Programacion web'
+            'name'=>'Mecánica'
         ]);
 
     }

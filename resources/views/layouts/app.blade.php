@@ -40,6 +40,9 @@
         @isset($js)
             {{$js}}    
         @endisset
+
+        @livewire('fot')
+
         
     </body>
 </html>

@@ -21,8 +21,8 @@ class PriceSeeder extends Seeder
         ]);
 
         Price::create([
-            'name'=>'19.99 US$ (nivel 1)',
-            'value'=>19.99
+            'name'=>'25.00 US$ (nivel 1)',
+            'value'=>25.00
         ]);
 
         Price::create([

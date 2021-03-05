@@ -2,10 +2,11 @@
 
 
 <article class="card flex flex-col">
-    <img class="h-36 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
+    <a href="{{route('courses.show',$course)}}"><img class="h-36 w-full object-cover"  src="{{Storage::url($course->image->url)}}" alt=""></a>
+    
    
     <div class="card-body flex-1 flex flex-col">
-        <h1 class="card-title">{{Str::limit($course->title, 40)}}</h1>
+        <a href="{{route('courses.show',$course)}}"><h1 class="card-title">{{Str::limit($course->title, 40)}}</h1></a>
         <p class="text-gray-500 text-sm mb-2 mt-auto">Prof:{{$course->teacher->name}}</p>
 
         <div class="flex">
@@ -35,18 +36,18 @@
 
         </div> 
         
-        @if ($course->price->value==0)
-            <p class="my-2 text-green-800 font-bold">Gratis</p>    
-        @else
-            <p class="my-2 text-gray-500 font-bold">U$${{$course->price->value}}</p>
-        @endif
+        <hr>
         
         
 
-        <a  href="{{route('courses.show',$course)}}" class="btn btn-primary btn-block">
-            Más Información
+        <a  href="{{route('courses.show',$course)}}" class="btn btn-success btn-block">
+            @if ($course->price->value==0)
+                <p class=" text-gray-800 font-extrabold">Gratis</p>    
+            @else
+                <p class="text-gray-500 font-bold">U$${{$course->price->value}}</p>
+            @endif
         </a>
     </div>
-
+    
 
 </article>

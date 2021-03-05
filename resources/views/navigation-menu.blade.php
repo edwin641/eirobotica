@@ -164,8 +164,10 @@
                             </x-slot>
                         </x-jet-dropdown>
                     @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Login</a>
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                    
+                    <a  href="{{ route('login') }}" class="btn  focus:outline-none text-blue-600 text-sm py-2.5 px-5 rounded-md border border-blue-600 hover:bg-blue-50 mr-2 mt-2 ">Entrar</a>
+                    
+                    <a href="{{ route('register') }}" class="btn focus:outline-none text-white text-sm py-2.5 px-5 rounded-md bg-red-500 hover:bg-red-600 hover:shadow-lg mr-2 mt-2">Crear Cuenta</a>
                     @endauth
 
                 </div>
@@ -294,11 +296,11 @@
 
 
                 <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
-                    Login
+                    Entrar
                 </x-jet-responsive-nav-link>
 
                 <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
-                    Register
+                    Crear cuenta
                 </x-jet-responsive-nav-link>
             </div>
             

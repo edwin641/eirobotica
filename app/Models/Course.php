@@ -49,14 +49,14 @@ class Course extends Model
     }
 
 
-
-
-
-
      //Relacion uno a muchos
 
      public function reviews(){
         return $this->hasMany('App\Models\Review');
+    }
+
+    public function questions(){
+        return $this->hasMany('App\Models\Question');
     }
 
     public function requirements(){

@@ -14,4 +14,6 @@
     </section>
     @livewire('courses-index')
 
+    
+    
 </x-app-layout>

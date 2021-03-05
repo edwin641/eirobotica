@@ -5,11 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Course;
 
-class CoursesReviews extends Component
+class CourseQuestions extends Component
 {
     public $course_id, $comment;
-
-    public $rating = 5;
+    protected $rules= [
+        'comment' => 'required',
+                  
+    ];
+      
 
     public function mount(Course $course){
         $this->course_id = $course->id;
@@ -17,17 +20,23 @@ class CoursesReviews extends Component
     public function render()
     {
         $course = Course::find($this->course_id);
-        return view('livewire.courses-reviews', compact('course'));
+        return view('livewire.course-questions', compact('course'));
     }
 
     public function store(){
+         $rules= [
+            'comment' => 'required',
+                       
+        ];
+        $this->validate($rules);
         $course = Course::find($this->course_id);
-
-        $course->reviews()->create([
-            'comment' => $this->comment,
-            'rating' => $this->rating,
+        
+        $course->questions()->create([
+            'comment' => $this->comment,            
             'user_id' =>  auth()->user()->id
         ]);
+       
     }
     
+   
 }
