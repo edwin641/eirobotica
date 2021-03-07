@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
+use Laravel\Socialite\Facades\Socialite;
+use App\Http\Controllers\SocialController;
+
 
 use App\Http\Livewire\CourseStatus;
 
@@ -34,3 +37,7 @@ Route::get('course-status/{course}', CourseStatus::class)->name('courses.status'
 Route::get('terms', function () {
     return view('terms');
 })->name('terminos');
+
+Route::get('login/{driver}', [SocialController::class, 'facebookRedirect']);
+
+Route::get('login/{driver}/callback', [SocialController::class, 'loginWithFacebook']);

@@ -73,6 +73,10 @@
         </div>
 
     </form>
+
+    <p class="mt-3 mb-2 text-center">-o-</p>
+    <a href="{{url('login/facebook')}}" class="btn btn-block btn-primary">Iniciar sesion con facebook</a>
+    <a href="{{url('login/google')}}" class="btn btn-block btn-danger">Iniciar sesion con google</a>
 @stop
 
 @section('auth_footer')

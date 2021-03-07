@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 
+
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -30,6 +31,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+       
     ];
 
     /**
@@ -59,7 +61,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $appends = [
-        'profile_photo_url',
+         'profile_photo_url',
     ];
 
     //Relacion uno a uno
@@ -94,5 +96,14 @@ class User extends Authenticatable
 
     public function lessons(){
         return $this->belongsToMany('App\Models\Lesson');
+    }
+
+
+
+    //social user
+
+    //Relacion uno a muchos
+    public function socialProfiles(){
+        return $this->hasMany('App\Models\SocialProfile');
     }
 }
