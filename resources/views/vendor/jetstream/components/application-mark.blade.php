@@ -1,4 +1,4 @@
 
-<img src ="/img/home/logorobot.png" width="200" height="100">
+<img src ="/img/home/logorobot.svg" width="200" height="100">
 
 
