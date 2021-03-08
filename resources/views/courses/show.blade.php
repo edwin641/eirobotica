@@ -1,3 +1,17 @@
+
+@section('meta')
+    <!-- Google / Search Engine Tags -->
+        <meta itemprop="name" content="Eirobotica">
+        <meta itemprop="description" content="{{$course->subtitle}}">
+        <meta itemprop="image" content="{{Storage::url($course->image->url)}}">
+
+        <!-- Facebook Meta Tags -->
+       
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="{{$course->title}}">
+        <meta property="og:description" content="{{$course->subtitle}}">
+        <meta property="og:image" content="{{Storage::url($course->image->url)}}">
+@endsection
 <x-app-layout>
     <section class="bg-gray-700 py-12 mb-12">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
