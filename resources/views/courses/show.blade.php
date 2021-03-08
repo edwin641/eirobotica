@@ -11,6 +11,8 @@
         <meta property="og:title" content="{{$course->title}}">
         <meta property="og:description" content="{{$course->subtitle}}">
         <meta property="og:image" content="{{Storage::url($course->image->url)}}">
+
+        <title>{{$course->title}}</title>
 @endsection
 <x-app-layout>
     <section class="bg-gray-700 py-12 mb-12">
