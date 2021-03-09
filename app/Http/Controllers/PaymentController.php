@@ -18,6 +18,13 @@ class PaymentController extends Controller
                 config('services.paypal.client_secret')     // ClientSecret
             )
         );
+        $apiContext->setConfig(
+            array(
+              
+              'mode' => 'live',
+              
+            )
+      );
         // After Step 2
         $payer = new \PayPal\Api\Payer();
         $payer->setPaymentMethod('paypal');

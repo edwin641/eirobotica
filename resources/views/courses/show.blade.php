@@ -17,11 +17,9 @@
 <x-app-layout>
     <section class="bg-gray-700 py-12 mb-12">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="col">
-                <div class="card-img">
-                    <img class="h-60 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
-                </div>
-            </div>
+            <figure>
+                <img class="h-60 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
+            </figure>
 
             <div class="text-white">
                 <h1 class="text-4xl">{{$course->title}}</h1>
