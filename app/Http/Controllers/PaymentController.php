@@ -66,6 +66,13 @@ class PaymentController extends Controller
                 config('services.paypal.client_secret')     // ClientSecret
             )
         );
+        $apiContext->setConfig(
+            array(
+              
+              'mode' => 'live',
+              
+            )
+      );
         $paymentId = $_GET['paymentId'];
         $payment = \PayPal\Api\Payment::get($paymentId, $apiContext);
 
