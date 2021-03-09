@@ -19,7 +19,7 @@
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div class="col">
                 <div class="card-img">
-                    <img  src="{{Storage::url($course->image->url)}}" alt="">
+                    <img class="h-60 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
                 </div>
             </div>
 
