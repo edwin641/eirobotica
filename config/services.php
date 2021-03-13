@@ -34,6 +34,11 @@ return [
         'client_secret' => env('PAYPAL_CLIENT_SECRET'),
         
     ],    
+    'mercado' => [
+        'client_id' => env('MERCADO_CLIENT_ID'),
+        'client_secret' => env('MERCADO_CLIENT_TOKEN'),
+        
+    ], 
     'facebook' => [
         'client_id' => env('FACEBOOK_CLIENT_ID'),
         'client_secret' => env('FACEBOOK_CLIENT_SECRET'),

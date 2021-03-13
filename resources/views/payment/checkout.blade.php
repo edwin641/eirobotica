@@ -13,9 +13,7 @@
                 <div class="flex justify-end mt-2 mb-4">
                     <a href="{{route('payment.pay', $course)}}" class="btn btn-primary">Comprar este curso</a>
                 </div>
-                <div class="flex justify-end mt-2 mb-4">
-                    <a href="{{route('payment.pay', $course)}}" class="btn btn-primary">Comprar este curso</a>
-                </div>
+               
 
                 <hr>
                 <p class="text-sm mt-4">Al hacer clic en "Crear cuenta" certifico que tengo 14 años o más y acepto las Condiciones de Uso, la Política de Privacidad y recibir novedades y promociones. <a  class="text-red-500 font-bold" href="{{'terms'}}">Terminos y condiciones</a></p>
