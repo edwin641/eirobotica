@@ -35,6 +35,12 @@
         <div class="order-2 lg:col-span-2 lg:order-1">
             <section class="card mb-12">
                 <div class="card-body">
+                    <h1 class="font-bold text-2xl mb-2">Descripcción</h1>
+                       
+                    {{$course->description}} 
+            
+                </div>
+                <div class="card-body">
                     <h1 class="font-bold text-2xl mb-2">Lo que aprenderás</h1>
 
                     <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2">

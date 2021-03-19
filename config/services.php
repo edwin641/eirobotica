@@ -14,6 +14,11 @@ return [
     |
     */
 
+    'currency_conversion' => [
+        'base_uri' => env('CURRENCY_CONVERSION_BASE_URI'),
+        'api_key' => env('CURRENCY_CONVERSION_API_KEY'),
+    ],
+
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
@@ -50,4 +55,11 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URL'),
     ],
 
+    'mercadopago' => [
+        'base_uri' => env('MERCADOPAGO_BASE_URI'),
+        'key' => env('MERCADOPAGO_KEY'),
+        'secret' => env('MERCADOPAGO_SECRET'),
+        'base_currency' => 'pen',
+        'class' => App\Services\MercadoPagoService::class,
+    ],
 ];
