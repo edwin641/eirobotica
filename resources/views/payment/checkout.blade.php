@@ -34,16 +34,16 @@
                     <h1 class="text-lg ml-2">{{$course->title}}</h1>
                     <p class="text-xl font-bold ml-auto">U$$ {{$course->price->value}}</p>
                 </article>
-                {{--
+               
                 <div class="flex justify-end mt-2 mb-4">
                     <a href="{{route('payment.pay', $course)}}" class="btn btn-primary">Comprar este curso</a>
                 </div>
                 
 
-                --}}
+               
                 
 
-
+ {{--
 
         <!-- check -->
 
@@ -173,7 +173,7 @@
 
 
            
-
+ --}}
 
 
 
@@ -203,7 +203,7 @@
 
 
 
-
+{{--
          
 
 
@@ -297,7 +297,7 @@
 
                
 
-
+--}}
 
 
 
@@ -331,7 +331,7 @@
 
 
 
-
+{{--
     
 
     @push('scripts')
@@ -386,7 +386,7 @@
 
 
 
-
+--}}
 
 
 
