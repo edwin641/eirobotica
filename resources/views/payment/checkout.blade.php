@@ -213,7 +213,7 @@
                     <div class="row">
                         <div class="col-auto">
                             <label>Cuanto deseas pagar</label>
-                            <input type="number" name="value" min="5" step="0.01" class="form-control" value="100.00">
+                            <input type="number" name="value" min="5" step="0.01" class="form-control" value="6.00">
                             <input type="text" name="currency" min="5" step="0.01" class="form-control" value="USD">
                             
                         </div>
