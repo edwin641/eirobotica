@@ -35,15 +35,15 @@
                     <p class="text-xl font-bold ml-auto">U$$ {{$course->price->value}}</p>
                 </article>
 
-               {{-- <div class="flex justify-end mt-2 mb-4">
+                <div class="flex justify-end mt-2 mb-4">
                     <a href="{{route('payment.pay', $course)}}" class="btn btn-primary">Comprar este curso</a>
                 </div>
-                --}}
+                
 
 
                 
 
-
+{{--
 
         <!-- check -->
 
@@ -172,7 +172,7 @@
 
 
 
-
+            --}}
 
 
 
@@ -204,7 +204,7 @@
 
 
 
-
+          {{--
 
 
                   <form action="{{ route('paymercado') }}" method="POST" id="paymentForm">
@@ -295,7 +295,7 @@
 
 
 
-
+                --}}
 
 
 
@@ -332,7 +332,7 @@
 
 
 
-
+    {{--
 
     @push('scripts')
       
@@ -382,7 +382,7 @@
     </script>
     @endpush
     
-        
+    --}}
 
 
 
