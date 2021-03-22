@@ -1,33 +1,40 @@
 <?php
 
 namespace App\Traits;
-
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Exception\ClientException;
 use GuzzleHttp\Client;
+use RuntimeException;
 
 trait ConsumesExternalServices
 {
     public function makeRequest($method, $requestUrl, $queryParams = [], $formParams = [], $headers = [], $isJsonRequest = false)
     {
-        $client = new Client([
-            'base_uri' => $this->baseUri,
-        ]);
+        try{
+            $client = new Client([
+                'base_uri' => $this->baseUri,
+            ]);
 
-        if (method_exists($this, 'resolveAuthorization')) {
-            $this->resolveAuthorization($queryParams, $formParams, $headers);
+            if (method_exists($this, 'resolveAuthorization')) {
+                $this->resolveAuthorization($queryParams, $formParams, $headers);
+            }
+
+            $response = $client->request($method, $requestUrl, [
+                $isJsonRequest ? 'json' : 'form_params' => $formParams,
+                'headers' => $headers,
+                'query' => $queryParams,
+            ]);
+
+            $response = $response->getBody()->getContents();
+
+            if (method_exists($this, 'decodeResponse')) {
+                $response = $this->decodeResponse($response);
+            }
+
+            return $response;
+
+        }catch(RuntimeException $e){
+            return back()->withError($e->getMessage())->withInput();
         }
-
-        $response = $client->request($method, $requestUrl, [
-            $isJsonRequest ? 'json' : 'form_params' => $formParams,
-            'headers' => $headers,
-            'query' => $queryParams,
-        ]);
-
-        $response = $response->getBody()->getContents();
-
-        if (method_exists($this, 'decodeResponse')) {
-            $response = $this->decodeResponse($response);
-        }
-
-        return $response;
     }
 }

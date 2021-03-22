@@ -13,19 +13,21 @@ class PaymentMercadoController extends Controller
    
     public function pay(Request $request){
 
-        
        
-        $rules = [
-            'value' ,
-            'currency' ,
-           
-        ];
+       
+            $rules = [
+                'value' ,
+                'currency' ,
+            
+            ];
 
-        $request->validate($rules);
+            $request->validate($rules);
 
-        $paymentPlatform = resolve(MercadoPagoService::class);
+            $paymentPlatform = resolve(MercadoPagoService::class);
 
-        return $paymentPlatform->handlePayment($request);
+            return $paymentPlatform->handlePayment($request);
+       
+
     }
     public function approval(){
        
@@ -34,14 +36,14 @@ class PaymentMercadoController extends Controller
         
             return $paymentPlatform->handleApproval();
         
-        return redirect()
-            ->route('home')
+        return back()
+           
             ->withErrors('We cannot retrieve your payment platform. Try again, plase.');
        
     }
     public function cancelled(){
-        return redirect()
-            ->route('home')
+        return back()
+            
             ->withErrors('You cancelled the payment');
     }
 }

@@ -24,6 +24,7 @@
  </style>
 @endsection
 <x-app-layout>
+
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8 py-12">
         <h1 class="text-gray-500 text-3xl font-bold">Detalle del pedido</h1>
 
@@ -193,6 +194,34 @@
 
 
 
+     
+         
+              @if (isset($errors) && $errors->any())
+                  <div class="alert alert-danger">
+                      <ul>
+                          @foreach ($errors->all() as $error)
+                              <li>{{ $error }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+      
+              @if (session()->has('success'))
+                  <div class="alert alert-success">
+                      <ul>
+                          @foreach (session()->get('success') as $message)
+                              <li>{{ $message }}</li>
+                          @endforeach
+                      </ul>
+                  </div>
+              @endif
+         
+          
+     
+
+
+
+      
 
 
 
@@ -200,10 +229,6 @@
 
 
 
-
-
-
-{{--
          
 
 
@@ -211,18 +236,13 @@
                     @csrf
 
                     <div class="row">
-                        <div class="col-auto">
-                            <label>Cuanto deseas pagar</label>
-                            <input type="number" name="value" min="5" step="0.01" class="form-control" value="6.00">
-                            <input type="text" name="currency" min="5" step="0.01" class="form-control" value="USD">
+                        <div class="col-auto">                            
+                            <input type="hidden" name="value" class="form-control" value="6.00">
+                            <input type="hidden" name="currency" class="form-control" value="USD">
                             
                         </div>
-                        <div class="row mt-3">
-                            <label> Selecciona el metodo de pago</label>
-
-                          
-                            
-                                <div>
+                        <div class="row mt-3">                                    
+                          <div>
                                     <label class="mt-3">Card details:</label>
 
                                                                     <div class="form-group form-row">
@@ -252,7 +272,7 @@
                                                                             <input class="form-control" type="text" data-checkout="cardholderName" placeholder="Your Name">
                                                                         </div>
                                                                         <div class="col-5">
-                                                                            <input class="form-control" type="email" data-checkout="cardholderEmail" placeholder="email@example.com" name="email">
+                                                                            <input class="form-control" type="hidden" data-checkout="cardholderEmail" value="{{ Auth::user()->email }}" name="email">
                                                                         </div>
                                                                     </div>
 
@@ -297,7 +317,7 @@
 
                
 
---}}
+
 
 
 
@@ -331,7 +351,7 @@
 
 
 
-{{--
+
     
 
     @push('scripts')
@@ -386,7 +406,7 @@
 
 
 
---}}
+
 
 
 
