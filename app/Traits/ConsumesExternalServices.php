@@ -10,7 +10,7 @@ trait ConsumesExternalServices
 {
     public function makeRequest($method, $requestUrl, $queryParams = [], $formParams = [], $headers = [], $isJsonRequest = false)
     {
-        try{
+        
             $client = new Client([
                 'base_uri' => $this->baseUri,
             ]);
@@ -33,8 +33,6 @@ trait ConsumesExternalServices
 
             return $response;
 
-        }catch(RuntimeException $e){
-            return back()->withError($e->getMessage())->withInput();
-        }
+        
     }
 }
