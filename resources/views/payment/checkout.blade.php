@@ -44,7 +44,48 @@
                
                 
 
- {{--
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+
+
+
+
+
+                <hr>
+                <p class="text-sm mt-4">Al hacer clic en "Crear cuenta" acepto las Condiciones de Uso, la Política de Privacidad y recibir novedades y promociones. <a  class="text-red-500 font-bold" href="{{'terms'}}">Terminos y condiciones</a></p>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+              
 
         <!-- check -->
 
@@ -53,7 +94,7 @@
 
                                 
           <div class="row">
-            <div class="col-lg-7 mx-auto">
+            <div class="col-lg-9 mx-auto">
               <div class="bg-white rounded-lg shadow-sm p-5">
                 <!-- Credit card form tabs -->
                 <ul role="tablist" class="nav bg-light nav-pills rounded-pill nav-fill mb-3">
@@ -84,16 +125,39 @@
         
                   <!-- credit card info-->
                   <div id="nav-tab-card" class="tab-pane fade show active">
-                    <p class="alert alert-success">Some text success or error</p>
-                    <form role="form">
+                    <p >
+
+                                @if (isset($errors) && $errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                    
+                            @if (session()->has('success'))
+                                <div class="alert alert-success">
+                                    <ul>
+                                        @foreach (session()->get('success') as $message)
+                                            <li>{{ $message }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                      
+                    </p>
+                    <form action="{{ route('paymercado') }}" method="POST" id="paymentForm">
+                      @csrf
                       <div class="form-group">
                         <label for="username">Nombre completo</label>
-                        <input type="text" name="username" placeholder="Jason Doe" required class="form-control">
+                        <input class="form-control" type="text" data-checkout="cardholderName" placeholder="Tu Nombre completo" required>
                       </div>
                       <div class="form-group">
                         <label for="cardNumber">Número de Tarjeta</label>
                         <div class="input-group">
-                          <input type="text" name="cardNumber" placeholder="Your card number" class="form-control" required>
+                          <input class="form-control" type="text" id="cardNumber" data-checkout="cardNumber" placeholder="Número de tarjeta" required>
                           <div class="input-group-append">
                             <span class="input-group-text text-muted">
                                                         <i class="fa fa-cc-visa mx-1"></i>
@@ -108,8 +172,9 @@
                           <div class="form-group">
                             <label><span class="hidden-xs">Expiracion</span></label>
                             <div class="input-group">
-                              <input type="number" placeholder="Mes" name="" class="form-control" required>
-                              <input type="number" placeholder="Año" name="" class="form-control" required>
+                              
+                              <input type="number" class="form-control"  data-checkout="cardExpirationMonth" placeholder="Mes" required>
+                              <input type="number" class="form-control"  data-checkout="cardExpirationYear" placeholder="Año" required>
                             </div>
                           </div>
                         </div>
@@ -118,14 +183,39 @@
                             <label data-toggle="tooltip" title="Three-digits code on the back of your card">CVV
                                                         <i class="fa fa-question-circle"></i>
                                                     </label>
-                            <input type="text" required class="form-control">
+                            <input class="form-control" type="text" data-checkout="securityCode" placeholder="CVC" required>
                           </div>
                         </div>
-        
-        
-        
+                        
+                        <input type="hidden" name="value" class="form-control" value="6.00">
+                        <input type="hidden" name="currency" class="form-control" value="USD">
+                        <input class="form-control" type="hidden" data-checkout="cardholderEmail" value="{{ Auth::user()->email }}" name="email">
+                        
+
+                        <div class="form-group form-row">
+                          <div class="col-sm-4">
+                              <select class="custom-select" data-checkout="docType"></select>
+                          </div>
+                          <div class="col-sm-4">
+                              <input class="form-control" type="text" data-checkout="docNumber" placeholder="Document">
+                          </div>
                       </div>
-                      <button type="button" class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirma  </button>
+
+
+
+                      <div class="form-group form-row">
+                          <div class="col-8">
+                              <small class="form-text text-danger" id="paymentErrors" role="alert"></small>
+                          </div>
+                      </div>
+
+                      <input type="hidden" id="cardNetwork" name="card_network">
+                      <input type="hidden" id="cardToken" name="card_token">
+                      <input type="hidden" id="deviceId">
+
+
+                      </div>
+                      <button type="submit" id="payButton"  class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"> Confirma  </button>
                     </form>
                   </div>
                   <!-- End -->
@@ -170,52 +260,8 @@
         
 
         <!-- check -->
-
-
-
-           
- --}}
-
-
-
-
-
-
-
-                <hr>
-                <p class="text-sm mt-4">Al hacer clic en "Crear cuenta" acepto las Condiciones de Uso, la Política de Privacidad y recibir novedades y promociones. <a  class="text-red-500 font-bold" href="{{'terms'}}">Terminos y condiciones</a></p>
-            </div>
-        </div>
-
-
-
-
-
-
-
-
-     
          
-              @if (isset($errors) && $errors->any())
-                  <div class="alert alert-danger">
-                      <ul>
-                          @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                          @endforeach
-                      </ul>
-                  </div>
-              @endif
-      
-              @if (session()->has('success'))
-                  <div class="alert alert-success">
-                      <ul>
-                          @foreach (session()->get('success') as $message)
-                              <li>{{ $message }}</li>
-                          @endforeach
-                      </ul>
-                  </div>
-              @endif
-         
+             
           
      
 
@@ -319,19 +365,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
     </div>
 
 
@@ -358,6 +391,8 @@
       
 
     <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js"></script>
+    
+    <script src="https://www.mercadopago.com/v2/security.js" view="checkout" output="deviceId"></script>
     
     <script>
         const mercadoPago = window.Mercadopago;
