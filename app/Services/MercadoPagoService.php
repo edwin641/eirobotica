@@ -5,6 +5,8 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use App\Traits\ConsumesExternalServices;
 use App\Services\CurrencyConversionService;
+use App\Models\Course;
+use App\Http\Controllers\PaymentController;
 use RuntimeException;
 
 
@@ -48,7 +50,7 @@ class MercadoPagoService
         return $this->secret;
     }
 
-    public function handlePayment(Request $request)
+    public function handlePayment(Request $request, Course $course)
     {   
        
                 $request->validate([
@@ -73,14 +75,22 @@ class MercadoPagoService
                     $originalAmount = $request->value;
                     $originalCurrency = strtoupper($request->currency);
 
-                    return back()
+                    $matricula = new PaymentController;
+                    $matricula->matricula($course);
+                    //$course->students()->attach(auth()->user()->id);
+                    
+                     
+                   
+                    //return back()
                         
-                        ->withSuccess(['payment' => "Thanks, {$name}. We received your {$originalAmount}{$originalCurrency} payment ({$amount}{$currency})."]);
+                     //->withSuccess(['payment' => "Thanks, {$name}. We received your {$originalAmount}{$originalCurrency} payment ({$amount}{$currency})."]);
+
+                     return redirect()->route('courses.status', $course);
                 }
 
                 return back()
                     
-                    ->withErrors('We were unable to confirm your payment. Try again, please');
+                    ->withErrors('No pudimos confirmar su pago. Trate otra vez, por favor');
         
            
     }

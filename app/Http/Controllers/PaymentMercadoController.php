@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Services\PayPalService;
 use App\Resolvers\PaymentPlatformResolver;
 use App\Services\MercadoPagoService;
+use App\Models\Course;
 
 class PaymentMercadoController extends Controller
 {
     //
    
-    public function pay(Request $request){
+    public function pay(Request $request,Course $course){
 
        
        
@@ -25,7 +26,7 @@ class PaymentMercadoController extends Controller
 
             $paymentPlatform = resolve(MercadoPagoService::class);
 
-            return $paymentPlatform->handlePayment($request);
+            return $paymentPlatform->handlePayment($request, $course);
        
 
     }

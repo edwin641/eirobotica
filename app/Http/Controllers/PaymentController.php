@@ -84,4 +84,9 @@ class PaymentController extends Controller
        // return "usurio matriculado";
         return redirect()->route('courses.status', $course);
     }
+    public function matricula(Course $course){
+        $course->students()->attach(auth()->user()->id);
+        // return "usurio matriculado";
+         return redirect()->route('courses.status', $course);
+    }
 }

@@ -44,7 +44,7 @@
 @endsection
 <x-app-layout>
 
-{{--<div class="max-w-4xl mx-auto sm:px-6 lg:px-8 py-12">--}}
+
         
       <div class="container max-w-4xl mx-auto sm:px-6 lg:px-8 py-12">
         
@@ -55,11 +55,7 @@
                     
 
                          <!-- check -->
-
-              
-                        
-
-                                                
+                      
                          
                           <div class="col-lg-12 mx-auto">
                             <div class="bg-white rounded-lg shadow p-5">
@@ -115,7 +111,7 @@
                                           @endif
                                     
                                   </p>
-                                  <form action="{{ route('paymercado') }}" method="POST" id="paymentForm">
+                                  <form action="{{route('paymercado', $course)}}" method="POST" id="paymentForm">
                                     @csrf
                                     <div class="form-group">
                                       <label for="username">Nombre completo</label>
@@ -154,7 +150,7 @@
                                         </div>
                                       </div>
                                       
-                                      <input type="hidden" name="value" class="form-control" value="6.00">
+                                      <input type="hidden" name="value" class="form-control" value="{{$course->price->value}}">
                                       <input type="hidden" name="currency" class="form-control" value="USD">
                                       <input class="form-control" type="hidden" data-checkout="cardholderEmail" value="{{ Auth::user()->email }}" name="email">
                                       
@@ -267,9 +263,6 @@
                         <p class="text-xl font-bold ml-auto">U$$ {{$course->price->value}}</p>
                     </article>
                   
-                    {{--<div class="flex justify-end mt-2 mb-4">
-                        <a href="{{route('payment.pay', $course)}}" class="btn btn-primary">Comprar este curso</a>
-                    </div>--}}
                     <hr>
                     <p class="text-sm mt-4">Al hacer clic en "Crear cuenta" acepto las Condiciones de Uso, la Política de Privacidad y recibir novedades y promociones. <a  class="text-red-500 font-bold" href="{{'terms'}}">Terminos y condiciones</a></p>
                 </div>
@@ -319,7 +312,7 @@
              
          
            
-   {{-- </div>--}}
+   
 
 
 

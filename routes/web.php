@@ -7,6 +7,8 @@ use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\SocialController;
 
 use App\Http\Controllers\PaymentMercadoController;
+use App\Services\MercadoPagoService;
+use App\Http\Controllers\PaymentController;
 
 
 use App\Http\Livewire\CourseStatus;
@@ -44,7 +46,7 @@ Route::get('login/{driver}', [SocialController::class, 'facebookRedirect']);
 
 Route::get('login/{driver}/callback', [SocialController::class, 'loginWithFacebook']);
 
-Route::post('/payments/pay',[App\Http\Controllers\PaymentMercadoController::class, 'pay'])->name('paymercado');
+Route::post('{course}/pay',[App\Http\Controllers\PaymentMercadoController::class, 'pay'])->name('paymercado');
 Route::get('/payments/approval',[App\Http\Controllers\PaymentMercadoController::class, 'approval'])->name('approval');
 Route::get('/payments/cancelled',[App\Http\Controllers\PaymentMercadoController::class, 'cancelled'])->name('cancelled');
 
