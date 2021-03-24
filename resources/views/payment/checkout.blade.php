@@ -200,15 +200,15 @@
                                   <h6>Otros medios de pago</h6>
                                   <dl>
                                     <dt>Western Unión</dt>
-                                    <dd>Comunicate con nosotros </dd>
+                                    {{--<dd>Comunicate con nosotros </dd>--}}
                                   </dl>
                                   <dl>
                                     <dt>Money Gram</dt>
-                                    <dd>Comunicate con nosotros</dd>
+                                    {{--<dd>Comunicate con nosotros </dd>--}}
                                   </dl>
                                   <dl>
-                                    <dt>Mercado Pago</dt>
-                                    <dd>Comunicate con nosotros</dd>
+                                    <dt>Transferencias interbancarias</dt>
+                                    {{--<dd>Comunicate con nosotros </dd>--}}
                                   </dl>
                                   <p>
                                     <a href="https://wa.me/5211234567890?text=Que%20otros%20medios%20de%20pago%20hay?%20" class="btn btn-primary"><i class="fa fa-whatsapp mr-2"></i>Contactate con nosotros</a>
